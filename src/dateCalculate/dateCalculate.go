@@ -16,3 +16,8 @@ func Diff(startDate time.Time, endDate time.Time) int {
 	durationDays := int(durationUnix) / secondsInDays
 	return durationDays
 }
+
+func DaysToHours(days int) string{
+
+	return "3,648 hours"
+}

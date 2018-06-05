@@ -15,3 +15,14 @@ func Test_Diff_Input_4_1_2018_4_6_2018_should_be_152(t *testing.T) {
 		t.Error("Expected: ", expectedResult, " but got ", duration)
 	}
 }
+
+func Test_DaysToHours_Input_152_should_be_3648_hours(t *testing.T) {
+	days :=152
+
+	expectedResult := "3,648 hours"
+	duration := DaysToHours(days)
+	if expectedResult != duration {
+		t.Error("Expected: ", expectedResult, " but got ", duration)
+	}
+}
+
