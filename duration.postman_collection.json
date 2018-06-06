@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "1d897a34-ad88-4a35-a23d-1a811c5affac",
+		"name": "duration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "input start_day 4 start_month 1 start_year 2018 end_day 4 end_month 6 end_year 2018 should be Result 152 days",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7ddf662-9f30-4ca8-a265-bb53c334df75",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"json is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.from).to.eql(\"Thursday, 4 January 2018\");",
+							"    pm.expect(jsonData.to).to.eql(\"Monday, 4 June 2018\");",
+							"    pm.expect(jsonData.days).to.eql(\"152 days\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/duration?start_day=4&start_month=1&start_year=2018&end_day=4&end_month=6&end_year=2018",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"duration"
+					],
+					"query": [
+						{
+							"key": "start_day",
+							"value": "4"
+						},
+						{
+							"key": "start_month",
+							"value": "1"
+						},
+						{
+							"key": "start_year",
+							"value": "2018"
+						},
+						{
+							"key": "end_day",
+							"value": "4"
+						},
+						{
+							"key": "end_month",
+							"value": "6"
+						},
+						{
+							"key": "end_year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
