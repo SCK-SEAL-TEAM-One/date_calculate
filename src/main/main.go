@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strconv"
 )
 
 func main() {
@@ -27,7 +26,7 @@ func main() {
 		result := map[string]string{
 			"from": dateCalculate.FormatDate(startDate),
 			"to":   dateCalculate.FormatDate(endDate),
-			"days": strconv.Itoa(duration) + " days",
+			"days": dateCalculate.FormatDays(duration),
 		}
 		resultJSON, err := json.Marshal(result)
 		if err != nil {
