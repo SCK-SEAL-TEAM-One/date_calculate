@@ -7,6 +7,18 @@ import (
 	"github.com/dustin/go-humanize"
 )
 
+type duration struct {
+	fullStartDateName string
+	fullEndDateName   string
+	days              string
+	years             string
+	seconds           string
+	minutes           string
+	hours             string
+	weeks             string
+	ratioOfYear       string
+}
+
 func StringToTime(year, month, day string) time.Time {
 	dayNumber, _ := strconv.Atoi(day)
 	monthNumber, _ := strconv.Atoi(month)
@@ -76,4 +88,17 @@ func FormatDate(date time.Time) string {
 	day := date.Day()
 	year := date.Year()
 	return weekDay + ", " + strconv.Itoa(day) + " " + month + " " + strconv.Itoa(year)
+}
+
+func makeJson(startDate time.Time, endDate time.Time) duration {
+	fullStartDateName := FormatDate(startDate)
+	fullEndDateName := FormatDate(endDate)
+	days := Diff(startDate, endDate)
+
+	setJOSN := duration{
+		fullStartDateName: fullStartDateName,
+		fullEndDateName:   fullEndDateName,
+		days:              strconv.Itoa(days) + " days",
+	}
+	return setJOSN
 }
