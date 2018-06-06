@@ -3,6 +3,7 @@ package dateCalculate
 import (
 	"strconv"
 	"time"
+
 	"github.com/dustin/go-humanize"
 )
 
@@ -28,6 +29,9 @@ func Diff(startDate time.Time, endDate time.Time) int {
 
 func FormatDays(days int) string {
 	numberWithComma := humanize.Comma(int64(days))
+	if days <= 1 {
+		return numberWithComma + " day"
+	}
 	return numberWithComma + " days"
 }
 
@@ -43,26 +47,26 @@ func DaysToMinutes(days int) string {
 	return numberWithComma + " minutes"
 }
 
-func DaysToSeconds(days int) string{
+func DaysToSeconds(days int) string {
 	seconds := days * 24 * 60 * 60
 	numberWithComma := humanize.Comma(int64(seconds))
 	return numberWithComma + " seconds"
 }
 
-func DaysToWeeks(days int) string{
+func DaysToWeeks(days int) string {
 	weeks := days / 7
 	weeks_days := days % 7
 	numberWeeksWithComma := humanize.Comma(int64(weeks))
 	return numberWeeksWithComma + " weeks and " + strconv.Itoa(weeks_days) + " days"
 }
 
-func DaysToRatioOfYears(days int, startDate ,endDate time.Time) string{
+func DaysToRatioOfYears(days int, startDate, endDate time.Time) string {
 	ratio := ((float64(days) / 365) * 100)
 	outputRatio := strconv.FormatFloat(ratio, 'f', 2, 64) + "% of "
 
-	if startDate.Year() == endDate.Year(){
+	if startDate.Year() == endDate.Year() {
 		outputRatio += strconv.Itoa(startDate.Year())
-	}else {
+	} else {
 		outputRatio += "common year (365 days)"
 	}
 

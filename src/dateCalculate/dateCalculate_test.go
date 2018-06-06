@@ -36,45 +36,45 @@ func Test_DaysToMinutes_Input_152_Should_be_218880_minutes(t *testing.T) {
 	}
 }
 
-func Test_DaysToSeconds_Input_152_Should_be_13132800_seconds(t *testing.T){
+func Test_DaysToSeconds_Input_152_Should_be_13132800_seconds(t *testing.T) {
 	days := 152
 
 	expectedResult := "13,132,800 seconds"
 	duration := DaysToSeconds(days)
 	if expectedResult != duration {
-		t.Error("Expected: ",expectedResult, " but got ", duration)
+		t.Error("Expected: ", expectedResult, " but got ", duration)
 	}
 }
 
-func Test_DaysToWeeks_Input_152_Should_be_21_weeks_and_5_days_seconds(t *testing.T){
+func Test_DaysToWeeks_Input_152_Should_be_21_weeks_and_5_days_seconds(t *testing.T) {
 	days := 152
 
 	expectedResult := "21 weeks and 5 days"
 	duration := DaysToWeeks(days)
 	if expectedResult != duration {
-		t.Error("Expected: ",expectedResult, " but got ", duration)
+		t.Error("Expected: ", expectedResult, " but got ", duration)
 	}
 }
 
-func Test_DaysToRatioOfYears_Input_152_4_1_2018_4_6_2018_Should_be_41_dot_64_percent_of_2018(t *testing.T){
+func Test_DaysToRatioOfYears_Input_152_4_1_2018_4_6_2018_Should_be_41_dot_64_percent_of_2018(t *testing.T) {
 	days := 152
 	inputStartDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	inputEndDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
 	expectedResult := "41.64% of 2018"
-	duration := DaysToRatioOfYears(days,inputStartDate,inputEndDate)
+	duration := DaysToRatioOfYears(days, inputStartDate, inputEndDate)
 	if expectedResult != duration {
-		t.Error("Expected: ",expectedResult, " but got ", duration)
+		t.Error("Expected: ", expectedResult, " but got ", duration)
 	}
 }
 
-func Test_DaysToRatioOfYears_Input_152_4_1_2018_4_6_2025_Should_be_742_dot_19_percent_of_common_year_365_days(t *testing.T){
+func Test_DaysToRatioOfYears_Input_152_4_1_2018_4_6_2025_Should_be_742_dot_19_percent_of_common_year_365_days(t *testing.T) {
 	days := 2709
 	inputStartDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	inputEndDate := time.Date(2025, 6, 4, 0, 0, 0, 0, time.UTC)
 	expectedResult := "742.19% of common year (365 days)"
-	duration := DaysToRatioOfYears(days,inputStartDate,inputEndDate)
+	duration := DaysToRatioOfYears(days, inputStartDate, inputEndDate)
 	if expectedResult != duration {
-		t.Error("Expected: ",expectedResult, " but got ", duration)
+		t.Error("Expected: ", expectedResult, " but got ", duration)
 	}
 }
 
@@ -103,5 +103,21 @@ func Test_StringToTime_Input_4_6_2018_Should_be_Monday_4_June_2018(t *testing.T)
 	expectedResult := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
 	if expectedResult != outputDate {
 		t.Error("Expected: ", expectedResult, " but got ", outputDate)
+	}
+}
+
+func Test_FormatDays_Input_1_Should_be_1_day(t *testing.T) {
+	outputDays := FormatDays(1)
+	expectedResult := "1 day"
+	if expectedResult != outputDays {
+		t.Error("Expected: ", expectedResult, " but got ", outputDays)
+	}
+}
+
+func Test_FormatDays_Input_2_Should_be_2_days(t *testing.T) {
+	outputDays := FormatDays(2)
+	expectedResult := "2 days"
+	if expectedResult != outputDays {
+		t.Error("Expected: ", expectedResult, " but got ", outputDays)
 	}
 }
