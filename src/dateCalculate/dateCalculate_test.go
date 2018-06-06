@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func Test_Diff_Input_4_1_2018_4_6_2018_should_be_152(t *testing.T) {
+func Test_Diff_Input_4_1_2018_4_6_2018_Should_be_152(t *testing.T) {
 	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
 
@@ -16,13 +16,33 @@ func Test_Diff_Input_4_1_2018_4_6_2018_should_be_152(t *testing.T) {
 	}
 }
 
-func Test_DaysToHours_Input_152_should_be_3648_hours(t *testing.T) {
+func Test_DaysToHours_Input_152_Should_be_3648_hours(t *testing.T) {
 	days := 152
 
 	expectedResult := "3,648 hours"
 	duration := DaysToHours(days)
 	if expectedResult != duration {
 		t.Error("Expected: ", expectedResult, " but got ", duration)
+	}
+}
+
+func Test_DaysToMinutes_Input_152_Should_be_218880_minutes(t *testing.T) {
+	days := 152
+
+	expectedResult := "218,880 minutes"
+	duration := DaysToMinutes(days)
+	if expectedResult != duration {
+		t.Error("Expected: ", expectedResult, " but got ", duration)
+	}
+}
+
+func Test_DaysToSeconds_Input_152_Should_be_13132800_seconds(t *testing.T){
+	days := 152
+
+	expectedResult := "13,132,800 seconds"
+	duration := DaysToSeconds(days)
+	if expectedResult != duration {
+		t.Error("Expected: ",expectedResult, " but got ", duration)
 	}
 }
 
