@@ -1,1 +1,2 @@
-go test
+export GOPATH=$(pwd)
+go test dateCalculate
