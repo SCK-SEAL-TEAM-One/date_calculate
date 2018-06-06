@@ -2,6 +2,8 @@ package dateCalculate
 
 import (
 	"time"
+
+	"github.com/dustin/go-humanize"
 )
 
 func Diff(startDate time.Time, endDate time.Time) int {
@@ -17,7 +19,11 @@ func Diff(startDate time.Time, endDate time.Time) int {
 	return durationDays
 }
 
-func DaysToHours(days int) string{
+func DaysToHours(days int) string {
 
-	return "3,648 hours"
+	hours := days * 24
+
+	numberWithComma := humanize.Comma(int64(hours))
+
+	return numberWithComma + " hours"
 }
