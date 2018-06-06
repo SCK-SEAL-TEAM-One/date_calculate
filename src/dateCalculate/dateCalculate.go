@@ -16,9 +16,6 @@ func StringToTime(year, month, day string) time.Time {
 }
 func Diff(startDate time.Time, endDate time.Time) int {
 	secondsInDays := (60 * 60 * 24)
-	if startDate.After(endDate) {
-		startDate, endDate = endDate, startDate
-	}
 	startTimestamp := startDate.Unix()
 	endTimestamp := endDate.Add(time.Hour * 24).Unix()
 
