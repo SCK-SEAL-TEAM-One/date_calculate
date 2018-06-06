@@ -35,3 +35,12 @@ func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing
 		t.Error("Expected: ", expectedResult, " but got ", outputDateFormat)
 	}
 }
+func Test_FormatDate_Input_4_6_2018_Should_be_Monday_4_June_2018(t *testing.T) {
+	inputDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
+	outputDateFormat := FormatDate(inputDate)
+
+	expectedResult := "Monday, 4 June 2018"
+	if expectedResult != outputDateFormat {
+		t.Error("Expected: ", expectedResult, " but got ", outputDateFormat)
+	}
+}

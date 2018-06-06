@@ -1,6 +1,7 @@
 package dateCalculate
 
 import (
+	"strconv"
 	"time"
 )
 
@@ -22,5 +23,11 @@ func DaysToHours(days int) string {
 	return "3,648 hours"
 }
 func FormatDate(date time.Time) string {
-	return "Thursday, 4 January 2018"
+
+	weekDay := date.Weekday().String()
+	month := date.Month().String()
+	day := date.Day()
+	year := date.Year()
+	return weekDay + ", " + strconv.Itoa(day) + " " + month + " " + strconv.Itoa(year)
+
 }
