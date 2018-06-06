@@ -5,6 +5,22 @@ import (
 	"time"
 )
 
+func Test_MakeJSON_Input_StartDate_EndDate_Days_Should_be_Json_object(t *testing.T) {
+
+	startDate := StringToTime("2018", "1", "4")
+	endDate := StringToTime("2018", "6", "4")
+
+	durations := makeJson(startDate, endDate)
+
+	expectedResult := duration{
+		fullStartDateName: "Thursday, 4 January 2018",
+		fullEndDateName:   "Monday, 4 June 2018",
+		days:              "152 days",
+	}
+	if expectedResult != durations {
+		t.Error("Expected: ", expectedResult, " but got ", durations)
+	}
+}
 func Test_Diff_Input_4_1_2018_4_6_2018_Should_be_152(t *testing.T) {
 	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
@@ -36,23 +52,23 @@ func Test_DaysToMinutes_Input_152_Should_be_218880_minutes(t *testing.T) {
 	}
 }
 
-func Test_DaysToSeconds_Input_152_Should_be_13132800_seconds(t *testing.T){
+func Test_DaysToSeconds_Input_152_Should_be_13132800_seconds(t *testing.T) {
 	days := 152
 
 	expectedResult := "13,132,800 seconds"
 	duration := DaysToSeconds(days)
 	if expectedResult != duration {
-		t.Error("Expected: ",expectedResult, " but got ", duration)
+		t.Error("Expected: ", expectedResult, " but got ", duration)
 	}
 }
 
-func Test_DaysToWeeks_Input_152_Should_be_21_weeks_and_5_days_seconds(t *testing.T){
+func Test_DaysToWeeks_Input_152_Should_be_21_weeks_and_5_days_seconds(t *testing.T) {
 	days := 152
 
 	expectedResult := "21 weeks and 5 days"
 	duration := DaysToWeeks(days)
 	if expectedResult != duration {
-		t.Error("Expected: ",expectedResult, " but got ", duration)
+		t.Error("Expected: ", expectedResult, " but got ", duration)
 	}
 }
 

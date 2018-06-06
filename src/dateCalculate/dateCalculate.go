@@ -3,8 +3,21 @@ package dateCalculate
 import (
 	"strconv"
 	"time"
+
 	"github.com/dustin/go-humanize"
 )
+
+type duration struct {
+	fullStartDateName string
+	fullEndDateName   string
+	days              string
+	years             string
+	seconds           string
+	minutes           string
+	hours             string
+	weeks             string
+	ratioOfYear       string
+}
 
 func StringToTime(year, month, day string) time.Time {
 	dayNumber, _ := strconv.Atoi(day)
@@ -38,13 +51,13 @@ func DaysToMinutes(days int) string {
 	return numberWithComma + " minutes"
 }
 
-func DaysToSeconds(days int) string{
+func DaysToSeconds(days int) string {
 	seconds := days * 24 * 60 * 60
 	numberWithComma := humanize.Comma(int64(seconds))
 	return numberWithComma + " seconds"
 }
 
-func DaysToWeeks(days int) string{
+func DaysToWeeks(days int) string {
 	weeks := days / 7
 	weeks_days := days % 7
 	numberWeeksWithComma := humanize.Comma(int64(weeks))
@@ -57,4 +70,17 @@ func FormatDate(date time.Time) string {
 	day := date.Day()
 	year := date.Year()
 	return weekDay + ", " + strconv.Itoa(day) + " " + month + " " + strconv.Itoa(year)
+}
+
+func makeJson(startDate time.Time, endDate time.Time) duration {
+	fullStartDateName := FormatDate(startDate)
+	fullEndDateName := FormatDate(endDate)
+	days := Diff(startDate, endDate)
+
+	setJOSN := duration{
+		fullStartDateName: fullStartDateName,
+		fullEndDateName:   fullEndDateName,
+		days:              strconv.Itoa(days) + " days",
+	}
+	return setJOSN
 }
