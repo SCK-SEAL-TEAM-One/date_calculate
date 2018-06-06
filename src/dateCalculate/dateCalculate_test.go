@@ -10,12 +10,17 @@ func Test_MakeJSON_Input_StartDate_EndDate_Days_Should_be_Json_object(t *testing
 	startDate := StringToTime("2018", "1", "4")
 	endDate := StringToTime("2018", "6", "4")
 
-	durations := makeJson(startDate, endDate)
+	durations := MakeJson(startDate, endDate)
 
 	expectedResult := duration{
-		from: "Thursday, 4 January 2018",
-		to:   "Monday, 4 June 2018",
-		days: "152 days",
+		From:        "Thursday, 4 January 2018",
+		To:          "Monday, 4 June 2018",
+		Days:        "152 days",
+		Seconds:     "13,132,800 seconds",
+		Minutes:     "218,880 minutes",
+		Hours:       "3,648 hours",
+		Weeks:       "21 weeks and 5 days",
+		RatioOfYear: "41.64% of 2018",
 	}
 	if expectedResult != durations {
 		t.Error("Expected: ", expectedResult, " but got ", durations)

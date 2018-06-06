@@ -24,14 +24,10 @@ func main() {
 		if startDate.After(endDate) {
 			startDate, endDate = endDate, startDate
 		}
-		duration := dateCalculate.Diff(startDate, endDate)
 
-		result := map[string]string{
-			"from": dateCalculate.FormatDate(startDate),
-			"to":   dateCalculate.FormatDate(endDate),
-			"days": dateCalculate.FormatDays(duration),
-		}
+		result := dateCalculate.MakeJson(startDate, endDate)
 		resultJSON, err := json.Marshal(result)
+
 		if err != nil {
 			fmt.Fprintf(w, "Error: %s", err)
 		}

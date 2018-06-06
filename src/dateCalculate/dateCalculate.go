@@ -8,15 +8,15 @@ import (
 )
 
 type duration struct {
-	from        string
-	to          string
-	days        string
-	years       string
-	seconds     string
-	minutes     string
-	hours       string
-	weeks       string
-	ratioOfYear string
+	From        string `json:"from"`
+	To          string `json:"to"`
+	Days        string `json:"days"`
+	Years       string `json:"years"`
+	Seconds     string `json:"seconds"`
+	Minutes     string `json:"minutes"`
+	Hours       string `json:"hours"`
+	Weeks       string `json:"weeks"`
+	RatioOfYear string `json:"ratioOfYear"`
 }
 
 func StringToTime(year, month, day string) time.Time {
@@ -90,15 +90,19 @@ func FormatDate(date time.Time) string {
 	return weekDay + ", " + strconv.Itoa(day) + " " + month + " " + strconv.Itoa(year)
 }
 
-func makeJson(startDate time.Time, endDate time.Time) duration {
+func MakeJson(startDate time.Time, endDate time.Time) duration {
 	fullStartDateName := FormatDate(startDate)
 	fullEndDateName := FormatDate(endDate)
 	days := Diff(startDate, endDate)
 
-	setJOSN := duration{
-		from: fullStartDateName,
-		to:   fullEndDateName,
-		days: strconv.Itoa(days) + " days",
+	return duration{
+		From:        fullStartDateName,
+		To:          fullEndDateName,
+		Days:        FormatDays(days),
+		Seconds:     DaysToSeconds(days),
+		Minutes:     DaysToMinutes(days),
+		Hours:       DaysToHours(days),
+		Weeks:       DaysToWeeks(days),
+		RatioOfYear: DaysToRatioOfYears(days, startDate, endDate),
 	}
-	return setJOSN
 }
