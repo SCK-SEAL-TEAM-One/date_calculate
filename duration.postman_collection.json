@@ -72,7 +72,7 @@
 			"response": []
 		},
 		{
-			"name": "input start_day 27 start_month 12 start_year 1994 end_day 4 end_month 6 end_year 2018 should be Result 8560 days",
+			"name": "input start_day 27 start_month 12 start_year 1994 end_day 4 end_month 6 end_year 2018 should be Result 8,560 days",
 			"event": [
 				{
 					"listen": "test",
@@ -119,6 +119,72 @@
 						{
 							"key": "start_year",
 							"value": "1994"
+						},
+						{
+							"key": "end_day",
+							"value": "4"
+						},
+						{
+							"key": "end_month",
+							"value": "6"
+						},
+						{
+							"key": "end_year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "input start_day 10 start_month 3 start_year 1995 end_day 4 end_month 6 end_year 2018 should be Result 8,488 days",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "12a2c8d2-d1b3-4224-bb9c-154d3d063645",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"json is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.from).to.eql(\"Friday, 10 March 1995\");",
+							"    pm.expect(jsonData.to).to.eql(\"Monday, 4 June 2018\");",
+							"    pm.expect(jsonData.days).to.eql(\"8,488 days\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/duration?start_day=10&start_month=3&start_year=1995&end_day=4&end_month=6&end_year=2018",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"duration"
+					],
+					"query": [
+						{
+							"key": "start_day",
+							"value": "10"
+						},
+						{
+							"key": "start_month",
+							"value": "3"
+						},
+						{
+							"key": "start_year",
+							"value": "1995"
 						},
 						{
 							"key": "end_day",
