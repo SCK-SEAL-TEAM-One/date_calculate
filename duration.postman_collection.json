@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e7ddf662-9f30-4ca8-a265-bb53c334df75",
+						"id": "9c478a1b-144b-4804-830a-5f37e8c17819",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"json is correct\", function () {",
@@ -19,6 +19,11 @@
 							"    pm.expect(jsonData.from).to.eql(\"Thursday, 4 January 2018\");",
 							"    pm.expect(jsonData.to).to.eql(\"Monday, 4 June 2018\");",
 							"    pm.expect(jsonData.days).to.eql(\"152 days\");",
+							"    pm.expect(jsonData.seconds).to.eql(\"13,132,800 seconds\");",
+							"    pm.expect(jsonData.minutes).to.eql(\"218,880 minutes\");",
+							"    pm.expect(jsonData.hours).to.eql(\"3,648 hours\");",
+							"    pm.expect(jsonData.weeks).to.eql(\"21 weeks and 5 days\");",
+							"    pm.expect(jsonData.ratioOfYear).to.eql(\"41.64% of 2018\");",
 							"});"
 						]
 					}
