@@ -21,6 +21,9 @@ func main() {
 
 		startDate := dateCalculate.StringToTime(startYear, startMonth, startDay)
 		endDate := dateCalculate.StringToTime(endYear, endMonth, endDay)
+		if startDate.After(endDate) {
+			startDate, endDate = endDate, startDate
+		}
 		duration := dateCalculate.Diff(startDate, endDate)
 
 		result := map[string]string{
