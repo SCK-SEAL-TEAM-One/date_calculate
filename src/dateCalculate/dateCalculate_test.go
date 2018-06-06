@@ -44,3 +44,11 @@ func Test_FormatDate_Input_4_6_2018_Should_be_Monday_4_June_2018(t *testing.T) {
 		t.Error("Expected: ", expectedResult, " but got ", outputDateFormat)
 	}
 }
+
+func Test_StringToTime_Input_4_6_2018_Should_be_Monday_4_June_2018(t *testing.T) {
+	outputDate := StringToTime("2018", "6", "4")
+	expectedResult := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
+	if expectedResult != outputDate {
+		t.Error("Expected: ", expectedResult, " but got ", outputDate)
+	}
+}

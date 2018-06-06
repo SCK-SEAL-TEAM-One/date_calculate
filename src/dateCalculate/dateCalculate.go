@@ -7,6 +7,13 @@ import (
 	"github.com/dustin/go-humanize"
 )
 
+func StringToTime(year, month, day string) time.Time {
+	dayNumber, _ := strconv.Atoi(day)
+	monthNumber, _ := strconv.Atoi(month)
+	yearNumber, _ := strconv.Atoi(year)
+
+	return time.Date(yearNumber, time.Month(monthNumber), dayNumber, 0, 0, 0, 0, time.UTC)
+}
 func Diff(startDate time.Time, endDate time.Time) int {
 	secondsInDays := (60 * 60 * 24)
 	if startDate.After(endDate) {
