@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1d897a34-ad88-4a35-a23d-1a811c5affac",
+		"_postman_id": "57c033ec-1e12-4990-ad57-23f4c2c567d0",
 		"name": "duration",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,7 +27,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:8080/duration?start_day=4&start_month=1&start_year=2018&end_day=4&end_month=6&end_year=2018",
 					"protocol": "http",
@@ -50,6 +53,72 @@
 						{
 							"key": "start_year",
 							"value": "2018"
+						},
+						{
+							"key": "end_day",
+							"value": "4"
+						},
+						{
+							"key": "end_month",
+							"value": "6"
+						},
+						{
+							"key": "end_year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "input start_day 27 start_month 12 start_year 1994 end_day 4 end_month 6 end_year 2018 should be Result 8560 days",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ad0150d0-a79b-40f3-abef-7b1ecae2e77e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"json is correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.from).to.eql(\"Tuesday, 27 December 1994\");",
+							"    pm.expect(jsonData.to).to.eql(\"Monday, 4 June 2018\");",
+							"    pm.expect(jsonData.days).to.eql(\"8,561 days\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/duration?start_day=27&start_month=12&start_year=1994&end_day=4&end_month=6&end_year=2018",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"duration"
+					],
+					"query": [
+						{
+							"key": "start_day",
+							"value": "27"
+						},
+						{
+							"key": "start_month",
+							"value": "12"
+						},
+						{
+							"key": "start_year",
+							"value": "1994"
 						},
 						{
 							"key": "end_day",
