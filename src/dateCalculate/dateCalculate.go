@@ -31,6 +31,12 @@ func DaysToMinutes(days int) string {
 	return numberWithComma + " minutes"
 }
 
+func DaysToSeconds(days int) string{
+	seconds := days * 24 * 60 * 60
+	numberWithComma := humanize.Comma(int64(seconds))
+	return numberWithComma + " seconds"
+}
+
 
 func FormatDate(date time.Time) string {
 	weekDay := date.Weekday().String()
