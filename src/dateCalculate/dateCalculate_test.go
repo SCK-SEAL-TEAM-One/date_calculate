@@ -46,6 +46,16 @@ func Test_DaysToSeconds_Input_152_Should_be_13132800_seconds(t *testing.T){
 	}
 }
 
+func Test_DaysToWeeks_Input_152_Should_be_21_weeks_and_5_days_seconds(t *testing.T){
+	days := 152
+
+	expectedResult := "21 weeks and 5 days"
+	duration := DaysToWeeks(days)
+	if expectedResult != duration {
+		t.Error("Expected: ",expectedResult, " but got ", duration)
+	}
+}
+
 func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing.T) {
 	inputDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	outputDateFormat := FormatDate(inputDate)

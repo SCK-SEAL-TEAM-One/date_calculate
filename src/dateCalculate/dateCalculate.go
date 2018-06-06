@@ -49,6 +49,12 @@ func DaysToSeconds(days int) string{
 	return numberWithComma + " seconds"
 }
 
+func DaysToWeeks(days int) string{
+	weeks := days / 7
+	weeks_days := days % 7
+	numberWeeksWithComma := humanize.Comma(int64(weeks))
+	return numberWeeksWithComma + " weeks and " + strconv.Itoa(weeks_days) + " days"
+}
 
 func FormatDate(date time.Time) string {
 	weekDay := date.Weekday().String()
