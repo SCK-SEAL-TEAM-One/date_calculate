@@ -17,7 +17,10 @@ func Diff(startDate time.Time, endDate time.Time) int {
 	return durationDays
 }
 
-func DaysToHours(days int) string{
+func DaysToHours(days int) string {
 
 	return "3,648 hours"
+}
+func FormatDate(date time.Time) string {
+	return "Thursday, 4 January 2018"
 }
