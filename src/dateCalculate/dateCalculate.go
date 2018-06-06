@@ -8,15 +8,15 @@ import (
 )
 
 type duration struct {
-	fullStartDateName string
-	fullEndDateName   string
-	days              string
-	years             string
-	seconds           string
-	minutes           string
-	hours             string
-	weeks             string
-	ratioOfYear       string
+	from        string
+	to          string
+	days        string
+	years       string
+	seconds     string
+	minutes     string
+	hours       string
+	weeks       string
+	ratioOfYear string
 }
 
 func StringToTime(year, month, day string) time.Time {
@@ -99,9 +99,9 @@ func makeJson(startDate time.Time, endDate time.Time) duration {
 	days := Diff(startDate, endDate)
 
 	setJOSN := duration{
-		fullStartDateName: fullStartDateName,
-		fullEndDateName:   fullEndDateName,
-		days:              strconv.Itoa(days) + " days",
+		from: fullStartDateName,
+		to:   fullEndDateName,
+		days: strconv.Itoa(days) + " days",
 	}
 	return setJOSN
 }
