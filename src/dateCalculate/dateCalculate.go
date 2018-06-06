@@ -26,6 +26,11 @@ func Diff(startDate time.Time, endDate time.Time) int {
 	return durationDays
 }
 
+func FormatDays(days int) string {
+	numberWithComma := humanize.Comma(int64(days))
+	return numberWithComma + " days"
+}
+
 func DaysToHours(days int) string {
 	hours := days * 24
 	numberWithComma := humanize.Comma(int64(hours))
