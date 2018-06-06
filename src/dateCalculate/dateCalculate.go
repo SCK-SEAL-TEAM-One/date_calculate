@@ -51,6 +51,19 @@ func DaysToWeeks(days int) string{
 	return numberWeeksWithComma + " weeks and " + strconv.Itoa(weeks_days) + " days"
 }
 
+func DaysToRatioOfYears(days int, startDate ,endDate time.Time) string{
+	ratio := ((float64(days) / 365) * 100)
+	outputRatio := strconv.FormatFloat(ratio, 'f', 2, 64) + "% of "
+
+	if startDate.Year() == endDate.Year(){
+		outputRatio += strconv.Itoa(startDate.Year())
+	}else {
+		outputRatio += "common year (365 days)"
+	}
+
+	return outputRatio
+}
+
 func FormatDate(date time.Time) string {
 	weekDay := date.Weekday().String()
 	month := date.Month().String()

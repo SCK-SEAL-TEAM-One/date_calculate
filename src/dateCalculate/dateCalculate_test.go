@@ -56,6 +56,28 @@ func Test_DaysToWeeks_Input_152_Should_be_21_weeks_and_5_days_seconds(t *testing
 	}
 }
 
+func Test_DaysToRatioOfYears_Input_152_4_1_2018_4_6_2018_Should_be_41_dot_64_percent_of_2018(t *testing.T){
+	days := 152
+	inputStartDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
+	inputEndDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
+	expectedResult := "41.64% of 2018"
+	duration := DaysToRatioOfYears(days,inputStartDate,inputEndDate)
+	if expectedResult != duration {
+		t.Error("Expected: ",expectedResult, " but got ", duration)
+	}
+}
+
+func Test_DaysToRatioOfYears_Input_152_4_1_2018_4_6_2025_Should_be_742_dot_19_percent_of_common_year_365_days(t *testing.T){
+	days := 2709
+	inputStartDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
+	inputEndDate := time.Date(2025, 6, 4, 0, 0, 0, 0, time.UTC)
+	expectedResult := "742.19% of common year (365 days)"
+	duration := DaysToRatioOfYears(days,inputStartDate,inputEndDate)
+	if expectedResult != duration {
+		t.Error("Expected: ",expectedResult, " but got ", duration)
+	}
+}
+
 func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing.T) {
 	inputDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	outputDateFormat := FormatDate(inputDate)
@@ -65,6 +87,7 @@ func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing
 		t.Error("Expected: ", expectedResult, " but got ", outputDateFormat)
 	}
 }
+
 func Test_FormatDate_Input_4_6_2018_Should_be_Monday_4_June_2018(t *testing.T) {
 	inputDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
 	outputDateFormat := FormatDate(inputDate)
