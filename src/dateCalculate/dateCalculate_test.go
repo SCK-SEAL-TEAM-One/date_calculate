@@ -62,7 +62,7 @@ func Test_DayToSeconds_Input_152_should_be_13132800(t *testing.T) {
 	days := 152
 	exception := "13,132,800 seconds"
 
-	actualSeconds := daysToSeconds(days)
+	actualSeconds := DaysToSeconds(days)
 
 	if actualSeconds != exception {
 		t.Error("Date was incorrect, got: ", actualSeconds, "want: ", exception)
@@ -86,5 +86,15 @@ func Test_DaysToHours_Input_152_Should_be_3648_Hours(t *testing.T) {
 	actualHours := DaysToHours(days)
 	if actualHours != exception {
 		t.Error("Days was incorrect, got: ", actualHours, "want: ", exception)
+	}
+}
+
+func Test_DaysToMinutes_Input_152_Should_be_218880_Minutes(t *testing.T) {
+	days := 152
+	exception := "218,880 minutes"
+
+	actualMinutes := DaysToMinutes(days)
+	if actualMinutes != exception {
+		t.Error("Days was incorrect, got: ", actualMinutes, "want: ", exception)
 	}
 }

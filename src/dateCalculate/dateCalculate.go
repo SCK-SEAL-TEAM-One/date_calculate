@@ -39,9 +39,9 @@ func MakeJSON(startDate, endDate time.Time) duration {
 		To:          "Monday, 4 June 2018",
 		Days:        FormatDays(days),
 		Years:       "5 months, 1 day",
-		Seconds:     daysToSeconds(152),
-		Minutes:     "218,880 minutes",
-		Hours:       "3,648 hours",
+		Seconds:     DaysToSeconds(days),
+		Minutes:     DaysToMinutes(days),
+		Hours:       DaysToHours(days),
 		Weeks:       "21 weeks and 5 days",
 		RatioOfYear: "41.64% of 2018",
 	}
@@ -61,9 +61,19 @@ func FormatDate(date time.Time) string {
 	return weekDay.String() + ", " + strconv.Itoa(day) + " " + month.String() + " " + strconv.Itoa(year)
 }
 
-func daysToSeconds(days int) string {
+func DaysToSeconds(days int) string {
 	seconds := days * DayToHours * HourToMinutes * MinuteToSeconds
 	return fmt.Sprintf("%s seconds", humanize.Comma(int64(seconds)))
+}
+
+func DaysToMinutes(days int) string {
+	hours := days * DayToHours * HourToMinutes
+	return fmt.Sprintf("%s minutes", humanize.Comma(int64(hours)))
+}
+
+func DaysToHours(days int) string {
+	hours := days * DayToHours
+	return fmt.Sprintf("%s hours", humanize.Comma(int64(hours)))
 }
 
 func FormatDays(days int) string {
@@ -71,9 +81,4 @@ func FormatDays(days int) string {
 		return fmt.Sprintf("%d day", days)
 	}
 	return fmt.Sprintf("%d days", days)
-}
-
-func DaysToHours(days int) string {
-	hours := days * DayToHours
-	return fmt.Sprintf("%s hours", humanize.Comma(int64(hours)))
 }
