@@ -3,14 +3,21 @@ package dateCalculate
 import (
 	"encoding/json"
 	"net/http"
-	"time"
 )
 
 func DurationHandler(w http.ResponseWriter, r *http.Request) {
-	startDate := time.Now()
-	endDate := time.Now()
+	queryString := r.URL.Query()
+	startDay := queryString.Get("start_day")
+	startMonth := queryString.Get("start_month")
+	startYear := queryString.Get("start_year")
+	endDay := queryString.Get("end_day")
+	endMonth := queryString.Get("end_month")
+	endYear := queryString.Get("end_year")
 
-	err := json.NewEncoder(w).Encode(MakeJSON(startDate,endDate))
+	startDate := StringToDate(startDay, startMonth, startYear)
+	endDate := StringToDate(endDay, endMonth, endYear)
+
+	err := json.NewEncoder(w).Encode(MakeJSON(startDate, endDate))
 	if err != nil {
 		panic(err)
 	}
