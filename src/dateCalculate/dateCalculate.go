@@ -39,7 +39,7 @@ func MakeJSON(startDate, endDate time.Time) duration {
 		From:        FormatDate(startDate),
 		To:          FormatDate(endDate),
 		Days:        FormatDays(days),
-		Years:       "5 months, 1 day",
+		Years:       FormatYear(days, startDate, endDate),
 		Seconds:     DaysToSeconds(days),
 		Minutes:     DaysToMinutes(days),
 		Hours:       DaysToHours(days),
@@ -104,4 +104,15 @@ func DaysToWeeks(days int) string {
 	weeksDays := days % weekToDays
 
 	return fmt.Sprintf("%d weeks and %d days", weeks, weeksDays)
+}
+
+func FormatYear(days int, startDate, endDate time.Time) string {
+	increaseOneDay := days + 1
+	month := (increaseOneDay / 30)
+	remainingDays := (increaseOneDay % 30)
+	diffDays := remainingDays - startDate.Day()
+	if diffDays < 0 {
+		diffDays = -1 * diffDays
+	}
+	return fmt.Sprintf("%d months, %d day", month, diffDays)
 }

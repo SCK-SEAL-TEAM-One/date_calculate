@@ -127,3 +127,16 @@ func Test_DaysToWeeks_Input_152_Should_be_21_Weeks_And_5_Days(t *testing.T) {
 		t.Error("DaysToWeeks was incorrect, got: ", actualDaysToWeeks, "want: ", exception)
 	}
 }
+
+func Test_FormatYear_Input_152_Should_be_759_5_months_comma_1_day(t *testing.T) {
+	days := 152
+	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
+	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
+	exception := "5 months, 1 day"
+
+	actualFormatYear := FormatYear(days, startDate, endDate)
+
+	if actualFormatYear != exception {
+		t.Error("FormatYear was incorrect, got: ", actualFormatYear, "want: ", exception)
+	}
+}
