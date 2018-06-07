@@ -43,7 +43,7 @@ func MakeJSON(startDate, endDate time.Time) duration {
 		Minutes:     DaysToMinutes(days),
 		Hours:       DaysToHours(days),
 		Weeks:       "21 weeks and 5 days",
-		RatioOfYear: "41.64% of 2018",
+		RatioOfYear: RatioOfYear(days, startDate, endDate),
 	}
 }
 
@@ -76,9 +76,24 @@ func DaysToHours(days int) string {
 	return fmt.Sprintf("%s hours", humanize.Comma(int64(hours)))
 }
 
+func RatioOfYear(days int, startDate, endDate time.Time) string {
+	daysInYears := 365
+	if startDate.Year() == endDate.Year() {
+		ratioOfYear := float64(days) / float64(daysInYear(startDate.Year())) * 100
+		return fmt.Sprintf("%.2f%% of %d", ratioOfYear, startDate.Year())
+	}
+	ratioOfYear := float64(days) / float64(daysInYears)
+	return fmt.Sprintf("%.2f%% of a common year (365 days)", ratioOfYear)
+}
+
 func FormatDays(days int) string {
 	if days < 2 {
 		return fmt.Sprintf("%d day", days)
 	}
 	return fmt.Sprintf("%d days", days)
+}
+
+func daysInYear(year int) int {
+	daysInFebruary := time.Date(year, time.February+1, 0, 0, 0, 0, 0, time.UTC).Day()
+	return daysInFebruary + 365 - 28
 }

@@ -98,3 +98,15 @@ func Test_DaysToMinutes_Input_152_Should_be_218880_Minutes(t *testing.T) {
 		t.Error("Days was incorrect, got: ", actualMinutes, "want: ", exception)
 	}
 }
+
+func Test_RatioOfYear_Input_152_Should_be_41_64_percent_of_2018(t *testing.T) {
+	days := 152
+	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
+	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
+	exception := "41.64% of 2018"
+
+	actualMinutes := RatioOfYear(days, startDate, endDate)
+	if actualMinutes != exception {
+		t.Error("Days was incorrect, got: ", actualMinutes, "want: ", exception)
+	}
+}
