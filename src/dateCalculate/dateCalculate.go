@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"time"
+
+	"github.com/dustin/go-humanize"
 )
 
 type duration struct {
