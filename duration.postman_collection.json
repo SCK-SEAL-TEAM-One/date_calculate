@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "63709f94-3041-4f9e-aef9-f20aaef9e5ec",
-		"name": "duration API",
+		"name": "duration",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2061b14b-57e4-485a-9266-77f28966cb01",
+						"id": "24368c97-e60e-42c2-bf15-45b56d9e7090",
 						"type": "text/javascript",
 						"exec": [
 							"var durationResponse = pm.response.json();",
@@ -21,7 +21,7 @@
 							"});",
 							"pm.test(\"To ควรเป็น Monday, 4 June 2018 \", function () {",
 							"    ",
-							"    pm.expect(durationResponse.to).to.eql(\"Thursday, 4 January 2018\");",
+							"    pm.expect(durationResponse.to).to.eql(\"Monday, 4 June 2018\");",
 							"});",
 							"pm.test(\"Results ควรเป็น 152 days \", function () {",
 							"    ",
@@ -29,7 +29,7 @@
 							"});",
 							"pm.test(\"Years ควรเป็น 5 months, 1 day \", function () {",
 							"    ",
-							"    pm.expect(durationResponse.years).to.eql(\" 5 months, 1 day\");",
+							"    pm.expect(durationResponse.years).to.eql(\"5 months, 1 day\");",
 							"});",
 							"pm.test(\"Seconds ควรเป็น 13,132,800 seconds \", function () {",
 							"    ",
