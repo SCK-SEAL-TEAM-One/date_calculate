@@ -26,10 +26,12 @@ func StringToDate(day, month, year string) time.Time {
 }
 
 func MakeJSON(startDate, endDate time.Time) duration {
+	days := Diff(startDate, endDate)
+
 	return duration{
 		From:        "Thursday, 4 January 2018",
 		To:          "Monday, 4 June 2018",
-		Days:        "152 days",
+		Days:        FormatDays(days),
 		Years:       "5 months, 1 day",
 		Seconds:     "13,132,800 seconds",
 		Minutes:     "218,880 minutes",
