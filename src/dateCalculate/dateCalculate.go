@@ -1,6 +1,7 @@
 package dateCalculate
 
 import (
+	"fmt"
 	"github.com/dustin/go-humanize"
 	"strconv"
 	"time"
@@ -26,10 +27,12 @@ func StringToDate(day, month, year string) time.Time {
 }
 
 func MakeJSON(startDate, endDate time.Time) duration {
+	days := Diff(startDate, endDate)
+
 	return duration{
 		From:        "Thursday, 4 January 2018",
 		To:          "Monday, 4 June 2018",
-		Days:        "152 days",
+		Days:        FormatDays(days),
 		Years:       "5 months, 1 day",
 		Seconds:     daysToSeconds(152),
 		Minutes:     "218,880 minutes",
@@ -52,4 +55,11 @@ func daysToSeconds(days int) string {
 	HourToMinutes := 60
 	MinuteToSeconds := 60
 	return humanize.Comma(int64(days*DayToHours*HourToMinutes*MinuteToSeconds)) + " seconds"
+}
+
+func FormatDays(days int) string {
+	if days < 2 {
+		return fmt.Sprintf("%d day", days)
+	}
+	return fmt.Sprintf("%d days", days)
 }
