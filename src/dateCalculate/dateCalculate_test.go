@@ -58,11 +58,9 @@ func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing
 		t.Error("Format Date was incorrect, got: ", actualFormatDate, "want: ", exception)
 	}
 }
-<<<<<<< HEAD
+
 func Test_DayToSeconds_Input_152_Should_be_13132800(t *testing.T) {
-=======
-func Test_DayToSeconds_Input_152_should_be_13132800(t *testing.T) {
->>>>>>> 328abe292ac87bf8cdfc22b10e0d76e4519e69ab
+
 	days := 152
 	exception := "13,132,800 seconds"
 
