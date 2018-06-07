@@ -69,3 +69,13 @@ func Test_FormatDays_Input_152_Should_be_152_days(t *testing.T) {
 		t.Error("Days was incorrect, got: ", actualDays, "want: ", exception)
 	}
 }
+
+func Test_DaysToHours_Input_152_Should_be_3648_Hours(t *testing.T) {
+	days := 152
+	exception := "3,648 hours"
+
+	actualHours := DaysToHours(days)
+	if actualHours != exception {
+		t.Error("Days was incorrect, got: ", actualHours, "want: ", exception)
+	}
+}

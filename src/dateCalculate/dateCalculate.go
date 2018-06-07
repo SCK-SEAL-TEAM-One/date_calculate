@@ -2,10 +2,15 @@ package dateCalculate
 
 import (
 	"fmt"
-	"github.com/dustin/go-humanize"
 	"strconv"
 	"time"
+
+	"github.com/dustin/go-humanize"
 )
+
+const DayToHours = 24
+const HourToMinutes = 60
+const MinuteToSeconds = 60
 
 type duration struct {
 	From        string `json:"from"`
@@ -43,18 +48,14 @@ func MakeJSON(startDate, endDate time.Time) duration {
 }
 
 func Diff(startDate, endDate time.Time) int {
-	duration := endDate.Add(time.Hour*24).Unix() - startDate.Unix()
-
-	days := duration / (60 * 60 * 24)
-
+	duration := endDate.Add(time.Hour*DayToHours).Unix() - startDate.Unix()
+	days := duration / (DayToHours * HourToMinutes * MinuteToSeconds)
 	return int(days)
 }
 
 func daysToSeconds(days int) string {
-	DayToHours := 24
-	HourToMinutes := 60
-	MinuteToSeconds := 60
-	return humanize.Comma(int64(days*DayToHours*HourToMinutes*MinuteToSeconds)) + " seconds"
+	seconds := days * DayToHours * HourToMinutes * MinuteToSeconds
+	return fmt.Sprintf("%s seconds", humanize.Comma(int64(seconds)))
 }
 
 func FormatDays(days int) string {
@@ -62,4 +63,9 @@ func FormatDays(days int) string {
 		return fmt.Sprintf("%d day", days)
 	}
 	return fmt.Sprintf("%d days", days)
+}
+
+func DaysToHours(days int) string {
+	hours := days * DayToHours
+	return fmt.Sprintf("%s hours", humanize.Comma(int64(hours)))
 }
