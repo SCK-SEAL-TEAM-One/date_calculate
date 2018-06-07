@@ -6,8 +6,8 @@ import (
 )
 
 func Test_MakeJSON_Input_4_1_2018_4_6_2018_Should_Be_Struct(t *testing.T) {
-	startDate := "2018-01-04"
-	endDate := "2018-06-04"
+	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
+	endDate := time.Date(2018, 1, 6, 0, 0, 0, 0, time.UTC)
 	exception := duration{
 		Form:        "Thursday, 4 January 2018",
 		To:          "Monday, 4 June 2018",
@@ -20,10 +20,10 @@ func Test_MakeJSON_Input_4_1_2018_4_6_2018_Should_Be_Struct(t *testing.T) {
 		RatioOfYear: "41.64% of 2018",
 	}
 
-	duration := MakeJSON(startDate, endDate)
+	actualDuration := MakeJSON(startDate, endDate)
 
-	if duration != exception {
-		t.Error("Duration was incorrect, got: ", duration, "want: ", exception)
+	if actualDuration != exception {
+		t.Error("Duration was incorrect, got: ", actualDuration, "want: ", exception)
 	}
 }
 
