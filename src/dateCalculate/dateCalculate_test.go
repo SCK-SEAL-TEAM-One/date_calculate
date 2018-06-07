@@ -49,7 +49,6 @@ func Test_Diff_Input_4_1_2018_4_6_2018_Should_be_152(t *testing.T) {
 	}
 }
 
-<<<<<<< HEAD
 func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing.T) {
 	date := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	exception := "Thursday, 4 January 2018"
@@ -58,8 +57,7 @@ func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing
 	if actualFormatDate != exception {
 		t.Error("Format Date was incorrect, got: ", actualFormatDate, "want: ", exception)
 	}
-
-=======
+}
 func Test_DayToSeconds_Input_152_should_be_13132800(t *testing.T) {
 	days := 152
 	exception := "13,132,800 seconds"
@@ -79,7 +77,6 @@ func Test_FormatDays_Input_152_Should_be_152_days(t *testing.T) {
 	if actualDays != exception {
 		t.Error("Days was incorrect, got: ", actualDays, "want: ", exception)
 	}
->>>>>>> c078bb8bf1f607cb3af48141730a76e0eb986906
 }
 
 func Test_DaysToHours_Input_152_Should_be_3648_Hours(t *testing.T) {
