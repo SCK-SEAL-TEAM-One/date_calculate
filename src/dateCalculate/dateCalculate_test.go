@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func Test_MakeJSON_Input_4_1_2018_4_6_2018_Should_Be_Struct(t *testing.T) {
+func Test_MakeJSON_Input_4_1_2018_4_6_2018_Should_be_Struct(t *testing.T) {
 	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
 	exception := duration{
@@ -37,7 +37,7 @@ func Test_StringToDate_Input_Day_4_Month_1_Year_2018_Should_be_Date_4_1_2018(t *
 	}
 }
 
-func Test_Diff_Input_4_1_2018_4_6_2018_Should_Be_152(t *testing.T) {
+func Test_Diff_Input_4_1_2018_4_6_2018_Should_be_152(t *testing.T) {
 	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
 	exception := 152
@@ -46,4 +46,15 @@ func Test_Diff_Input_4_1_2018_4_6_2018_Should_Be_152(t *testing.T) {
 	if actualDays != exception {
 		t.Error("Date was incorrect, got: ", actualDays, "want: ", exception)
 	}
+}
+
+func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing.T) {
+	date := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
+	exception := "Thursday, 4 January 2018"
+
+	actualFormatDate := FormatDate(date)
+	if actualFormatDate != exception {
+		t.Error("Format Date was incorrect, got: ", actualFormatDate, "want: ", exception)
+	}
+
 }
