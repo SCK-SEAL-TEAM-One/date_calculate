@@ -2,3 +2,5 @@ bin
 pkg
 src/github.com
 src/golang.org
+node_modules
+package-lock.json
