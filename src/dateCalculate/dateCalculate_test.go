@@ -5,6 +5,18 @@ import (
 	"time"
 )
 
+func Test_FormatDate_Input_27_12_1994_Should_be_Thursday_27_December_1994(t *testing.T) {
+	date := time.Date(1994, 12, 27, 0, 0, 0, 0, time.UTC)
+	exception := "Tuesday, 27 December 1994"
+
+	actualFormatDate := FormatDate(date)
+
+	if actualFormatDate != exception {
+		t.Error("Format Date was incorrect, got: ", actualFormatDate, "want: ", exception)
+	}
+}
+
+
 func Test_MakeJSON_Input_4_1_2018_4_6_2018_Should_be_Struct(t *testing.T) {
 	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
@@ -127,3 +139,4 @@ func Test_DaysToWeeks_Input_152_Should_be_21_Weeks_And_5_Days(t *testing.T) {
 		t.Error("DaysToWeeks was incorrect, got: ", actualDaysToWeeks, "want: ", exception)
 	}
 }
+
