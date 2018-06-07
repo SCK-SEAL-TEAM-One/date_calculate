@@ -11,6 +11,7 @@ import (
 const DayToHours = 24
 const HourToMinutes = 60
 const MinuteToSeconds = 60
+const weekToDays = 7
 
 type duration struct {
 	From        string `json:"from"`
@@ -42,7 +43,7 @@ func MakeJSON(startDate, endDate time.Time) duration {
 		Seconds:     DaysToSeconds(days),
 		Minutes:     DaysToMinutes(days),
 		Hours:       DaysToHours(days),
-		Weeks:       "21 weeks and 5 days",
+		Weeks:       DaysToWeeks(days),
 		RatioOfYear: "41.64% of 2018",
 	}
 }
@@ -81,4 +82,11 @@ func FormatDays(days int) string {
 		return fmt.Sprintf("%d day", days)
 	}
 	return fmt.Sprintf("%d days", days)
+}
+
+func DaysToWeeks(days int) string {
+	weeks := days / weekToDays
+	weeksDays := days % weekToDays
+
+	return fmt.Sprintf("%d weeks and %d days", weeks, weeksDays)
 }
