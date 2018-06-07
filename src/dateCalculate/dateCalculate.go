@@ -1,5 +1,9 @@
 package dateCalculate
 
+import(
+	"time"
+)
+
 type  duration struct {
     Form  	 	string
 	To 	   	 	string
@@ -12,7 +16,7 @@ type  duration struct {
 	RatioOfYear string
 }
 
-func MakeJSON(startDate, endDate string) duration{
+func MakeJSON(startDate, endDate time.Time) duration{
 	return duration{Form : "Thursday, 4 January 2018",
 		To : "Monday, 4 June 2018",
 		Days : "152 days",
