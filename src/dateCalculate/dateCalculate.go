@@ -11,6 +11,7 @@ import (
 const DayToHours = 24
 const HourToMinutes = 60
 const MinuteToSeconds = 60
+const weekToDays = 7
 
 type duration struct {
 	From        string `json:"from"`
@@ -35,14 +36,14 @@ func MakeJSON(startDate, endDate time.Time) duration {
 	days := Diff(startDate, endDate)
 
 	return duration{
-		From:        "Thursday, 4 January 2018",
-		To:          "Monday, 4 June 2018",
+		From:        FormatDate(startDate),
+		To:          FormatDate(endDate),
 		Days:        FormatDays(days),
 		Years:       "5 months, 1 day",
 		Seconds:     DaysToSeconds(days),
 		Minutes:     DaysToMinutes(days),
 		Hours:       DaysToHours(days),
-		Weeks:       "21 weeks and 5 days",
+		Weeks:       DaysToWeeks(days),
 		RatioOfYear: RatioOfYear(days, startDate, endDate),
 	}
 }
@@ -54,11 +55,11 @@ func Diff(startDate, endDate time.Time) int {
 }
 
 func FormatDate(date time.Time) string {
-	weekDay := date.Weekday()
-	day := date.Day()
-	month := date.Month()
-	year := date.Year()
-	return weekDay.String() + ", " + strconv.Itoa(day) + " " + month.String() + " " + strconv.Itoa(year)
+	weekDay := date.Weekday().String()
+	day := strconv.Itoa(date.Day())
+	month := date.Month().String()
+	year := strconv.Itoa(date.Year())
+	return fmt.Sprintf("%s, %s %s %s", weekDay, day, month, year)
 }
 
 func DaysToSeconds(days int) string {
@@ -90,10 +91,17 @@ func FormatDays(days int) string {
 	if days < 2 {
 		return fmt.Sprintf("%d day", days)
 	}
-	return fmt.Sprintf("%d days", days)
+	return fmt.Sprintf("%s days", humanize.Comma(int64(days)))
 }
 
 func daysInYear(year int) int {
 	daysInFebruary := time.Date(year, time.February+1, 0, 0, 0, 0, 0, time.UTC).Day()
 	return daysInFebruary + 365 - 28
+}
+
+func DaysToWeeks(days int) string {
+	weeks := days / weekToDays
+	weeksDays := days % weekToDays
+
+	return fmt.Sprintf("%d weeks and %d days", weeks, weeksDays)
 }

@@ -4,6 +4,10 @@
 export PATH=$PATH:./node_modules/.bin
 export GOPATH=$(pwd)
 
+# ก่อนทำงาน
+# ลบไฟล์ใน bin ทิ้งทั้งหมด
+rm bin/mainDateCalculate
+
 # สั่งจัด Format ของโค้ด
 go fmt dateCalculate
 

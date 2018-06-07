@@ -54,11 +54,14 @@ func Test_FormatDate_Input_4_1_2018_Should_be_Thursday_4_January_2018(t *testing
 	exception := "Thursday, 4 January 2018"
 
 	actualFormatDate := FormatDate(date)
+
 	if actualFormatDate != exception {
 		t.Error("Format Date was incorrect, got: ", actualFormatDate, "want: ", exception)
 	}
 }
-func Test_DayToSeconds_Input_152_should_be_13132800(t *testing.T) {
+
+func Test_DayToSeconds_Input_152_Should_be_13132800(t *testing.T) {
+
 	days := 152
 	exception := "13,132,800 seconds"
 
@@ -74,9 +77,11 @@ func Test_FormatDays_Input_152_Should_be_152_days(t *testing.T) {
 	exception := "152 days"
 
 	actualDays := FormatDays(days)
+
 	if actualDays != exception {
 		t.Error("Days was incorrect, got: ", actualDays, "want: ", exception)
 	}
+
 }
 
 func Test_DaysToHours_Input_152_Should_be_3648_Hours(t *testing.T) {
@@ -84,6 +89,7 @@ func Test_DaysToHours_Input_152_Should_be_3648_Hours(t *testing.T) {
 	exception := "3,648 hours"
 
 	actualHours := DaysToHours(days)
+
 	if actualHours != exception {
 		t.Error("Days was incorrect, got: ", actualHours, "want: ", exception)
 	}
@@ -94,6 +100,7 @@ func Test_DaysToMinutes_Input_152_Should_be_218880_Minutes(t *testing.T) {
 	exception := "218,880 minutes"
 
 	actualMinutes := DaysToMinutes(days)
+
 	if actualMinutes != exception {
 		t.Error("Days was incorrect, got: ", actualMinutes, "want: ", exception)
 	}
@@ -108,5 +115,15 @@ func Test_RatioOfYear_Input_152_Should_be_41_64_percent_of_2018(t *testing.T) {
 	actualMinutes := RatioOfYear(days, startDate, endDate)
 	if actualMinutes != exception {
 		t.Error("Days was incorrect, got: ", actualMinutes, "want: ", exception)
+	}
+}
+func Test_DaysToWeeks_Input_152_Should_be_21_Weeks_And_5_Days(t *testing.T) {
+	days := 152
+	exception := "21 weeks and 5 days"
+
+	actualDaysToWeeks := DaysToWeeks(days)
+
+	if actualDaysToWeeks != exception {
+		t.Error("DaysToWeeks was incorrect, got: ", actualDaysToWeeks, "want: ", exception)
 	}
 }
