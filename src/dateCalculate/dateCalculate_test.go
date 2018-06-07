@@ -43,7 +43,19 @@ func Test_Diff_Input_4_1_2018_4_6_2018_Should_Be_152(t *testing.T) {
 	exception := 152
 
 	actualDays := Diff(startDate, endDate)
+
 	if actualDays != exception {
 		t.Error("Date was incorrect, got: ", actualDays, "want: ", exception)
+	}
+}
+
+func Test_DayToSeconds_Input_152_should_be_13132800(t *testing.T) {
+	days := 152
+	exception := "13,132,800 seconds"
+
+	actualSeconds := daysToSeconds(days)
+
+	if actualSeconds != exception {
+		t.Error("Date was incorrect, got: ", actualSeconds, "want: ", exception)
 	}
 }
