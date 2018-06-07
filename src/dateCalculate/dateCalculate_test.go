@@ -7,16 +7,16 @@ import (
 
 func Test_MakeJSON_Input_4_1_2018_4_6_2018_Should_Be_Struct(t *testing.T) {
 	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
-	endDate := time.Date(2018, 1, 6, 0, 0, 0, 0, time.UTC)
+	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
 	exception := duration{
-		Form:        "Thursday, 4 January 2018",
+		From:        "Thursday, 4 January 2018",
 		To:          "Monday, 4 June 2018",
 		Days:        "152 days",
-		Years:       "5 months, 1 days",
+		Years:       "5 months, 1 day",
 		Seconds:     "13,132,800 seconds",
 		Minutes:     "218,880 minutes",
 		Hours:       "3,648 hours",
-		Weeks:       "1 weeks 7 days",
+		Weeks:       "21 weeks and 5 days",
 		RatioOfYear: "41.64% of 2018",
 	}
 
@@ -34,5 +34,16 @@ func Test_StringToDate_Input_Day_4_Month_1_Year_2018_Should_be_Date_4_1_2018(t *
 
 	if actualDate != exception {
 		t.Error("Date was incorrect, got: ", actualDate, "want: ", exception)
+	}
+}
+
+func Test_Diff_Input_4_1_2018_4_6_2018_Should_Be_152(t *testing.T) {
+	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
+	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
+	exception := 152
+
+	actualDays := Diff(startDate, endDate)
+	if actualDays != exception {
+		t.Error("Date was incorrect, got: ", actualDays, "want: ", exception)
 	}
 }
