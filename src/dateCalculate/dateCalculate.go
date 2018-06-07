@@ -24,7 +24,7 @@ func StringToDate(day, month, year string) time.Time {
 	return time.Date(yearNumber, time.Month(monthNumber), dayNumber, 0, 0, 0, 0, time.UTC)
 }
 
-func MakeJSON(startDate, endDate string) duration {
+func MakeJSON(startDate, endDate time.Time) duration {
 	return duration{
 		Form:        "Thursday, 4 January 2018",
 		To:          "Monday, 4 June 2018",
