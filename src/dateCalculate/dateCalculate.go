@@ -55,11 +55,11 @@ func Diff(startDate, endDate time.Time) int {
 }
 
 func FormatDate(date time.Time) string {
-	weekDay := date.Weekday()
-	day := date.Day()
-	month := date.Month()
-	year := date.Year()
-	return weekDay.String() + ", " + strconv.Itoa(day) + " " + month.String() + " " + strconv.Itoa(year)
+	weekDay := date.Weekday().String()
+	day := strconv.Itoa(date.Day())
+	month := date.Month().String()
+	year := strconv.Itoa(date.Year())
+	return fmt.Sprintf("%s, %s %s %s", weekDay, day, month, year)
 }
 
 func DaysToSeconds(days int) string {
