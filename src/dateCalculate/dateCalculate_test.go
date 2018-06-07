@@ -47,3 +47,13 @@ func Test_Diff_Input_4_1_2018_4_6_2018_Should_Be_152(t *testing.T) {
 		t.Error("Date was incorrect, got: ", actualDays, "want: ", exception)
 	}
 }
+
+func Test_FormatDays_Input_152_Should_be_152_days(t *testing.T) {
+	days := 152
+	exception := "152 days"
+
+	actualDays := FormatDays(days)
+	if actualDays != exception {
+		t.Error("Days was incorrect, got: ", actualDays, "want: ", exception)
+	}
+}

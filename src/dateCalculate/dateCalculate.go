@@ -1,6 +1,7 @@
 package dateCalculate
 
 import (
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -44,4 +45,11 @@ func Diff(startDate, endDate time.Time) int {
 	days := duration / (60 * 60 * 24)
 
 	return int(days)
+}
+
+func FormatDays(days int) string {
+	if days < 2 {
+		return fmt.Sprintf("%d day", days)
+	}
+	return fmt.Sprintf("%d days", days)
 }
