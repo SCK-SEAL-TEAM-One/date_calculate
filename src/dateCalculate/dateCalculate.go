@@ -103,7 +103,16 @@ func DaysToWeeks(days int) string {
 	weeks := days / weekToDays
 	weeksDays := days % weekToDays
 
-	return fmt.Sprintf("%d weeks and %d days", weeks, weeksDays)
+	day := "days"
+	if weeksDays == 1 {
+		day = "day"
+	}
+
+	if weeks < 1{
+		return fmt.Sprintf("%d %s", weeksDays,day)
+	}
+
+	return fmt.Sprintf("%d weeks and %d %s", weeks, weeksDays,day)
 }
 
 func FormatYear(days int, startDate, endDate time.Time) string {

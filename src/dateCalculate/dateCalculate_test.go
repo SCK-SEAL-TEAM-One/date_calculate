@@ -16,7 +16,6 @@ func Test_FormatDate_Input_27_12_1994_Should_be_Thursday_27_December_1994(t *tes
 	}
 }
 
-
 func Test_MakeJSON_Input_4_1_2018_4_6_2018_Should_be_Struct(t *testing.T) {
 	startDate := time.Date(2018, 1, 4, 0, 0, 0, 0, time.UTC)
 	endDate := time.Date(2018, 6, 4, 0, 0, 0, 0, time.UTC)
