@@ -53,6 +53,14 @@ func Diff(startDate, endDate time.Time) int {
 	return int(days)
 }
 
+func FormatDate(date time.Time) string {
+	weekDay := date.Weekday()
+	day := date.Day()
+	month := date.Month()
+	year := date.Year()
+	return weekDay.String() + ", " + strconv.Itoa(day) + " " + month.String() + " " + strconv.Itoa(year)
+}
+
 func daysToSeconds(days int) string {
 	seconds := days * DayToHours * HourToMinutes * MinuteToSeconds
 	return fmt.Sprintf("%s seconds", humanize.Comma(int64(seconds)))
