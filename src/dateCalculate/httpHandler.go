@@ -17,6 +17,10 @@ func DurationHandler(w http.ResponseWriter, r *http.Request) {
 	startDate := StringToDate(startDay, startMonth, startYear)
 	endDate := StringToDate(endDay, endMonth, endYear)
 
+	if startDate.After(endDate) {
+		startDate, endDate = endDate, startDate
+	}
+
 	err := json.NewEncoder(w).Encode(MakeJSON(startDate, endDate))
 	if err != nil {
 		panic(err)
