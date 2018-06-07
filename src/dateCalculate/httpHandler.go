@@ -3,22 +3,14 @@ package dateCalculate
 import (
 	"encoding/json"
 	"net/http"
+	"time"
 )
 
 func DurationHandler(w http.ResponseWriter, r *http.Request) {
-	durationResponse := map[string]string{
-		"from":        "Thursday, 4 January 2018",
-		"to":          "Monday, 4 June 2018",
-		"days":        "152 days",
-		"years":       "5 months, 1 day",
-		"seconds":     "13,132,800 seconds",
-		"minutes":     "218,880 minutes",
-		"hours":       "3,648 hours",
-		"weeks":       "21 weeks and 5 days",
-		"ratioOfYear": "41.64% of 2018",
-	}
+	startDate := time.Now()
+	endDate := time.Now()
 
-	err := json.NewEncoder(w).Encode(durationResponse)
+	err := json.NewEncoder(w).Encode(MakeJSON(startDate,endDate))
 	if err != nil {
 		panic(err)
 	}
